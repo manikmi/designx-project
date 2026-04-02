@@ -1,6 +1,6 @@
 {
   "name": "designx",
-  "homepage": "https://designx.github.io/designx-project",
+  "homepage": "https://manikmi.github.io/designx-project",
   "private": true,
   "version": "0.0.1",
   "type": "module",
@@ -8,7 +8,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "deploy": "gh-pages -d dist"
+    "deploy": "npm run build && gh-pages -d dist -r https://github.com/manikmi/designx-project.git"
   },
   "dependencies": {
     "framer-motion": "^10.16.4",
