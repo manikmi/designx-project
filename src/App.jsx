@@ -25,6 +25,16 @@ const tokens = {
   },
 };
 
+/** Same Unsplash photo, smaller file via their CDN (format + width + quality). */
+function unsplashLight(url, { w = 1200, q = 75 } = {}) {
+  const u = new URL(url)
+  u.searchParams.set("auto", "format")
+  u.searchParams.set("fit", "crop")
+  u.searchParams.set("w", String(w))
+  u.searchParams.set("q", String(q))
+  return u.href
+}
+
 // ---------------- REUSABLE COMPONENTS ----------------
 const Section = ({ children, className = "", ...props }) => (
   <section className={`${tokens.spacing.section} ${className}`} {...props}>
@@ -148,7 +158,10 @@ export default function DesignXInvestorLanding() {
       {/* HERO */}
       <section className="relative min-h-[85vh] flex items-center justify-center text-center overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
+          src={unsplashLight("https://images.unsplash.com/photo-1600585154340-be6161a56a0c", {
+            w: 1600,
+            q: 72,
+          })}
           className="absolute inset-0 w-full h-full object-cover"
           alt=""
           fetchPriority="high"
@@ -219,15 +232,24 @@ export default function DesignXInvestorLanding() {
         {[
             {
               title: 'Fragmented Supplier Network',
-              img: 'https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0',
+              img: unsplashLight("https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0", {
+                w: 720,
+                q: 72,
+              }),
             },
             {
               title: 'No Project Management',
-              img: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d',
+              img: unsplashLight("https://images.unsplash.com/photo-1556742049-0cfed4f6a45d", {
+                w: 720,
+                q: 72,
+              }),
             },
             {
               title: 'Manual Procurement',
-              img: 'https://images.unsplash.com/photo-1521791136064-7986c2920216',
+              img: unsplashLight("https://images.unsplash.com/photo-1521791136064-7986c2920216", {
+                w: 720,
+                q: 72,
+              }),
             },
           ].map((t, i) => (
             <Card key={i} className="overflow-hidden rounded-2xl border border-gray-200">
@@ -356,7 +378,10 @@ export default function DesignXInvestorLanding() {
       {/* CTA / CONTACT */}
       <section id="contact" className="relative py-24 text-center overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1600607687644-c7171b42498f"
+          src={unsplashLight("https://images.unsplash.com/photo-1600607687644-c7171b42498f", {
+            w: 1400,
+            q: 72,
+          })}
           className="absolute inset-0 w-full h-full object-cover"
           alt=""
           loading="lazy"
